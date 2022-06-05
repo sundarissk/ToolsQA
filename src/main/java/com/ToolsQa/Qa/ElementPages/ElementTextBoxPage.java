@@ -1,5 +1,9 @@
 package com.ToolsQa.Qa.ElementPages;
 
+import static com.ToolsQa.Qa.Utility.ElementUtil.ClickElement;
+import static com.ToolsQa.Qa.Utility.ElementUtil.Element_highlight;
+import static com.ToolsQa.Qa.Utility.ElementUtil.SendKeys;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -13,12 +17,16 @@ public class ElementTextBoxPage {
 	Actions actions;
 
 	// 1. Defining Page Element --> OR Object Repository
-	By fullname = By.xpath("//input[@id='userName']");
-	By email = By.xpath("//input[@id='userEmail']");
-	By caddress = By.xpath("//textarea[@id='currentAddress']");
-	By paddress = By.xpath("//textarea[@id='permanentAddress']");
-	By submit = By.xpath("//button[@id='submit']");
-	By output = By.xpath("//p[@id='name']");
+	static final By fullname = By.xpath("//input[@id='userName']");
+	static final By email = By.xpath("//input[@id='userEmail']");
+	static final By caddress = By.xpath("//textarea[@id='currentAddress']");
+	static final By paddress = By.xpath("//textarea[@id='permanentAddress']");
+	static final By submit = By.xpath("//button[@id='submit']");
+	static final By outputname = By.xpath("//p[@id='name']");
+	static final By outputemail = By.xpath("//p[@id='email']");
+	static final By outputcaddress = By.xpath("//p[@id='currentAddress']");
+	static final By outputpaddress = By.xpath("//p[@id='permanentAddress']");
+	
 
 	// 2. Initializing Page Object
 	public ElementTextBoxPage(WebDriver driver) {
@@ -29,25 +37,18 @@ public class ElementTextBoxPage {
 	// 3.Actions
 
 	public void Enternameclick() {
-		WebElement uname = driver.findElement(fullname);
-		ElementUtil.Element_highlight(uname, driver);
-		uname.sendKeys("sun");
-
+		Element_highlight(driver, fullname);
+		SendKeys(driver, fullname, 30, "Sun");
 	}
 
 	public void Enteremailclick() {
-
-		WebElement uemail = driver.findElement(email);
-		ElementUtil.Element_highlight(uemail, driver);
-		uemail.sendKeys("Sun@gmail.com");
-
+		Element_highlight(driver, email);
+		SendKeys(driver, email, 30, "Sun@gmail.com");
 	}
 
 	public void Entercaddressclick() {
-		WebElement addressc = driver.findElement(caddress);
-		ElementUtil.Element_highlight(addressc, driver);
-		addressc.sendKeys("12345, capital city, Delhi, TN");
-
+		Element_highlight(driver, caddress);
+		SendKeys(driver, caddress, 30, "12345, capital city, Delhi, TN");
 	}
 
 	public void Enterpaddressclick() {
@@ -63,26 +64,41 @@ public class ElementTextBoxPage {
 		// Paste the Address in the Permanent Address field
 		actions.keyDown(Keys.CONTROL).sendKeys("v").keyUp(Keys.CONTROL).build().perform();
 
-		WebElement addressp = driver.findElement(paddress);
-		ElementUtil.Element_highlight(addressp, driver);
+		Element_highlight(driver, paddress);
 
 	}
 
 	public void submitclick() {
-		WebElement submitbt = driver.findElement(submit);
+		try {
+		ElementUtil.ScrollToView(driver, submit);
+			Element_highlight(driver, submit);
+			ClickElement(driver, submit, 120);
 
-		ElementUtil.Element_highlight(submitbt, driver);
-		submitbt.sendKeys("sun");
+		} catch (Exception e) {
+			System.out.println("Error in submitclick :" + e);
+		}
 
 	}
 
 	public void outputdetails() {
-		WebElement outputdetails = driver.findElement(output);
-		String details = outputdetails.getAttribute("Name");
-		System.out.println("details : " + details);
-
-		String details1 = outputdetails.getText();
-		System.out.println("details1 : " + details1);
+		try {
+			WebElement opname = ElementUtil.LocatorToElement(driver, outputname);
+			WebElement opemail = ElementUtil.LocatorToElement(driver, outputemail);
+			WebElement opcadd = ElementUtil.LocatorToElement(driver, outputcaddress);
+			WebElement oppadd = ElementUtil.LocatorToElement(driver, outputpaddress);
+			String name = opname.getText();
+			String email = opemail.getText();
+			String cdd = opcadd.getText();
+			String pdd = oppadd.getText();
+			
+			System.out.println("Details Enter in the TextBox:");
+			System.out.println(name);
+			System.out.println(email);
+			System.out.println(cdd);
+			System.out.println(pdd);
+		} catch (Exception e) {
+			System.out.println("Error in outputdetails :" + e);
+		}
 
 	}
 

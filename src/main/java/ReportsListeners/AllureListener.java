@@ -7,11 +7,11 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import com.ToolsQa.Qa.Base.BaseClass;
+import com.ToolsQa.Qa.Base.DriverManager;
 
 import io.qameta.allure.Attachment;
 
-public class AllureListener extends BaseClass implements ITestListener {
+public class AllureListener extends DriverManager implements ITestListener {
 
 	// Baseclass bp = new Baseclass();
 
@@ -40,7 +40,7 @@ public class AllureListener extends BaseClass implements ITestListener {
 	@Override
 	public void onStart(ITestContext iTestContext) {
 		System.out.println("I am in onStart method " + iTestContext.getName());
-		iTestContext.setAttribute("WebDriver", BaseClass.getDriver());
+		iTestContext.setAttribute("WebDriver", DriverManager.getDriver());
 		saveTextLog("I am in onStart method " + iTestContext.getName());
 	}
 
@@ -67,7 +67,7 @@ public class AllureListener extends BaseClass implements ITestListener {
 	@Override
 	public void onTestFailure(ITestResult iTestResult) {
 		System.out.println("I am in onTestFailure method " + getTestMethodName(iTestResult) + " failed");
-		saveScreenshotAllure(BaseClass.driver);
+		saveScreenshotAllure(DriverManager.driver);
 		saveTextLog("I am in onTestFailure method " + getTestMethodName(iTestResult) + " Failed and screenshot taken");
 
 		/*

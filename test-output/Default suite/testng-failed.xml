@@ -5,10 +5,10 @@
     <classes>
       <class name="com.ToolsQa.Qa.Tests.ToolsQAElementPageTest">
         <methods>
-          <include name="setup"/>
+          <include name="ElementClickTest"/>
+          <include name="SetUp"/>
           <include name="ElementTextBoxTest"/>
           <include name="closing"/>
-          <include name="ElementPageTest"/>
         </methods>
       </class> <!-- com.ToolsQa.Qa.Tests.ToolsQAElementPageTest -->
     </classes>

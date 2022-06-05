@@ -9,9 +9,9 @@ import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
-import com.ToolsQa.Qa.Base.BaseClass;
+import com.ToolsQa.Qa.Base.DriverManager;
 
-public class ScreenShotUtil extends BaseClass {
+public class ScreenShotUtil extends DriverManager {
 
 	public static void takesshot(String filename) throws IOException {
 

@@ -8,16 +8,16 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
-import com.ToolsQa.Qa.Base.BaseClass;
+import com.ToolsQa.Qa.Base.DriverManager;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-public class ExtendListener extends BaseClass implements ITestListener {
+public class ExtendListener extends DriverManager implements ITestListener {
 
 	// Sequencial running Below code will work
 	// For parallel run neead ThreadLocal to maintain result accurate
-	BaseClass bp = new BaseClass();
+	DriverManager bp = new DriverManager();
 
 	ExtentReports extent = ExtentReporterBase.extentReporterGenerator();
 	ExtentTest test;

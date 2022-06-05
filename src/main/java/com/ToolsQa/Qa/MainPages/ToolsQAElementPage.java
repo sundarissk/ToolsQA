@@ -1,11 +1,13 @@
 package com.ToolsQa.Qa.MainPages;
 
+import static com.ToolsQa.Qa.Utility.ElementUtil.ClickElement;
+import static com.ToolsQa.Qa.Utility.ElementUtil.Element_highlight;
+import static com.ToolsQa.Qa.Utility.FunctionUtil.getcount;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import com.ToolsQa.Qa.ElementPages.ElementTextBoxPage;
-import com.ToolsQa.Qa.Utility.ElementUtil;
-import com.ToolsQa.Qa.Utility.WaitUtil;
 
 public class ToolsQAElementPage {
 
@@ -13,17 +15,17 @@ public class ToolsQAElementPage {
 
 	// 1. Defining Page Element --> OR Object Repository
 
-	By elementdrop = By.xpath("//div[@class='element-group'][1]//div[@class='icon']");
-	By elementlist = By.xpath("//div[@class='element-group'][1]//li");
-	By txtbox = By.xpath("//span[text()='Text Box']");
-	By chkbox = By.xpath("//span[text()='Check Box']");
-	By radiobtn = By.xpath("//span[text()='Radio Button']");
-	By webtable = By.xpath("//span[text()='Web Tables']");
-	By button = By.xpath("//span[text()='Buttons']");
-	By links = By.xpath("//span[text()='Links']");
-	By brokenlinks = By.xpath("//span[text()='Broken Links - Images']");
-	By updownload = By.xpath("//span[text()='Upload and Download']");
-	By dynamicprop = By.xpath("//span[text()='Dynamic Properties']");
+	static final By elementdrop = By.xpath("//div[@class='element-group'][1]//div[@class='icon']");
+	static final By elementlist = By.xpath("//div[@class='element-group'][1]//li");
+	static final By txtbox = By.xpath("//span[text()='Text Box']");
+	static final By chkbox = By.xpath("//span[text()='Check Box']");
+	static final By radiobtn = By.xpath("//span[text()='Radio Button']");
+	static final By webtable = By.xpath("//span[text()='Web Tables']");
+	static final By button = By.xpath("//span[text()='Buttons']");
+	static final By links = By.xpath("//span[text()='Links']");
+	static final By brokenlinks = By.xpath("//span[text()='Broken Links - Images']");
+	static final By updownload = By.xpath("//span[text()='Upload and Download']");
+	static final By dynamicprop = By.xpath("//span[text()='Dynamic Properties']");
 
 	// 2. Initializing Page Object
 	public ToolsQAElementPage(WebDriver driver) {
@@ -33,9 +35,8 @@ public class ToolsQAElementPage {
 	// 3.Actions
 	public void ElementDropClick() {
 		try {
-			WaitUtil.Element_wait_tobeclick(driver.findElement(elementdrop), 60, driver);
-			ElementUtil.Element_highlight(driver.findElement(elementdrop), driver);
-			driver.findElement(elementdrop).click();
+			Element_highlight(driver, elementdrop);
+			ClickElement(driver, elementdrop, 30);
 		} catch (Exception e) {
 			System.out.println("Error : " + e);
 		}
@@ -43,15 +44,14 @@ public class ToolsQAElementPage {
 	}
 
 	public int ElementCountCheck() {
-		int count = driver.findElements(elementlist).size();
+		int count = getcount(driver, elementlist);
 		return count;
 	}
 
 	public ElementTextBoxPage TextBoxClick() {
 		try {
-			WaitUtil.Element_wait_tobeclick(driver.findElement(txtbox), 30, driver);
-			ElementUtil.Element_highlight(driver.findElement(txtbox), driver);
-			driver.findElement(txtbox).click();
+			Element_highlight(driver, txtbox);
+			ClickElement(driver, txtbox, 30);
 
 		} catch (Exception e) {
 			System.out.println("Error : " + e);

@@ -1,51 +1,40 @@
 package com.ToolsQa.Qa.Tests;
 
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
+import static com.ToolsQa.Qa.Utility.FunctionUtil.switchframesindex;
+import static com.ToolsQa.Qa.Utility.FunctionUtil.switchiframeback;
 
 import org.junit.Assert;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.ToolsQa.Qa.Base.BaseClass;
+import com.ToolsQa.Qa.Base.DriverManager;
 import com.ToolsQa.Qa.ElementPages.ElementTextBoxPage;
 import com.ToolsQa.Qa.MainPages.ToolsQAElementPage;
 import com.ToolsQa.Qa.MainPages.ToolsQAHomePage;
-import com.ToolsQa.Qa.Utility.ElementUtil;
 
-public class ToolsQAElementPageTest extends BaseClass {
-	WebDriver driver;
+public class ToolsQAElementPageTest extends DriverManager {
+
 	String path = "C:\\Users\\skuma\\Local-Repo\\ToolsQA\\driver\\chromedriver.exe";
 	ToolsQAHomePage hp;
 	ToolsQAElementPage ep;
 	ElementTextBoxPage tp;
 
 	@BeforeTest
-	public void setup() {
-		System.setProperty("webdriver.chrome.driver", path);
-
-		driver = new ChromeDriver();
-
-		// driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-		driver.manage().window().maximize();
-		driver.manage().deleteAllCookies();
-		// driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
-		// driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
-
-		driver.get(prop.getProperty("url"));
-
+	public void SetUp() {
+		SetUpBrowser();
+		SetUpURL();
 	}
 
 	@Test(priority = 1)
-	public void ElementPageTest() throws InterruptedException {
+	public void ElementClickTest() throws InterruptedException {
 		hp = new ToolsQAHomePage(driver);
 		ep = new ToolsQAElementPage(driver);
-		ElementUtil.switchframesindex(driver, 0);
+
+		switchframesindex(driver, 0);
 		hp.IframeCloseClick();
-		ElementUtil.switchiframeback(driver);
+		switchiframeback(driver);
 
 		hp.ElementsClick();
 
@@ -66,18 +55,19 @@ public class ToolsQAElementPageTest extends BaseClass {
 		tp.Enteremailclick();
 		tp.Entercaddressclick();
 		tp.Enterpaddressclick();
-		//Thread.sleep(2000);
 		tp.submitclick();
-		
 		tp.outputdetails();
-		Thread.sleep(2000);
-		
 
+	}
+
+	@AfterMethod
+	public void EndOfMethod() {
+
+		System.out.println("***************************************************************");
 	}
 
 	@AfterTest
 	public void closing() {
-		driver.close();
-		driver.quit();
+		ClosingDown();
 	}
 }

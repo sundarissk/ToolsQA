@@ -5,9 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import com.ToolsQa.Qa.Base.BaseClass;
+import com.ToolsQa.Qa.Base.DriverManager;
 
-public class AlertUtil extends BaseClass {
+public class AlertUtil extends DriverManager {
 
 	// only can press ok button
 	public static void simple_alert(WebElement element) {

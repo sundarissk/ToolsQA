@@ -1,23 +1,23 @@
 package com.ToolsQa.Qa.MainPages;
 
+import static com.ToolsQa.Qa.Utility.ElementUtil.ClickElement;
+import static com.ToolsQa.Qa.Utility.ElementUtil.Element_highlight;
+import static com.ToolsQa.Qa.Utility.ElementUtil.ScrollToView;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-
-import com.ToolsQa.Qa.Utility.ElementUtil;
 
 public class ToolsQAHomePage {
 
 	WebDriver driver;
 	// 1. Defining Page Element --> OR Object Repository
-	By elements = By.xpath("//h5[text()='Elements']");
-	By forms = By.xpath("//h5[text()='Forms']");
-	By afw = By.xpath("//h5[text()='Alerts, Frame & Windows']");
-	By widgets = By.xpath("//h5[text()='Widgets']");
-	By interactions = By.xpath("//h5[text()='Interactions']");
-	By bookstoreapp = By.xpath("//h5[text()='Book Store Application']");
-	By iframeclose = By.xpath("//label[@id='cbb']");
+	static final By elements = By.xpath("//h5[text()='Elements']");
+	static final By forms = By.xpath("//h5[text()='Forms']");
+	static final By afw = By.xpath("//h5[text()='Alerts, Frame & Windows']");
+	static final By widgets = By.xpath("//h5[text()='Widgets']");
+	static final By interactions = By.xpath("//h5[text()='Interactions']");
+	static final By bookstoreapp = By.xpath("//h5[text()='Book Store Application']");
+	static final By iframeclose = By.xpath("//label[@id='cbb']");
 
 	// 2. Initializing Page Object
 	public ToolsQAHomePage(WebDriver driver) {
@@ -27,55 +27,55 @@ public class ToolsQAHomePage {
 	// 3.Actions
 	public ToolsQAElementPage ElementsClick() {
 		try {
-			ElementUtil.Element_highlight(driver.findElement(elements), driver);
-			ElementUtil.scroll_view(driver, elements);
-			driver.findElement(elements).click();
-			
+			Element_highlight(driver, elements);
+			ScrollToView(driver, elements);
+			ClickElement(driver, elements, 30);
+
 		} catch (Exception e) {
-			System.out.println("Error : "+e);
+			System.out.println("Error : " + e);
 		}
-		
+
 		return new ToolsQAElementPage(driver);
 
 	}
 
 	public ToolsQAFormsPage FormsClick() {
-		ElementUtil.Element_highlight(driver.findElement(forms), driver);
-		driver.findElement(forms).click();
+		Element_highlight(driver, forms);
+		ClickElement(driver, forms, 30);
 		return new ToolsQAFormsPage();
 
 	}
 
 	public ToolsQAAlrtFrmWinPage AlrtFrmWinClick() {
-		ElementUtil.Element_highlight(driver.findElement(afw), driver);
-		driver.findElement(afw).click();
+		Element_highlight(driver, afw);
+		ClickElement(driver, afw, 30);
 		return new ToolsQAAlrtFrmWinPage();
 
 	}
 
 	public ToolsQAWidgetsPage WidgetsClick() {
-		ElementUtil.Element_highlight(driver.findElement(widgets), driver);
-		driver.findElement(widgets).click();
+		Element_highlight(driver, widgets);
+		ClickElement(driver, widgets, 30);
 		return new ToolsQAWidgetsPage();
 	}
 
 	public ToolsQAInteractionsPage InteractionsClick() {
-		ElementUtil.Element_highlight(driver.findElement(interactions), driver);
-		driver.findElement(interactions).click();
+		Element_highlight(driver, interactions);
+		ClickElement(driver, interactions, 30);
 		return new ToolsQAInteractionsPage();
 
 	}
 
 	public ToolsQABookStoreAppPage BookStoreAppClick() {
-		ElementUtil.Element_highlight(driver.findElement(bookstoreapp), driver);
-		driver.findElement(bookstoreapp).click();
+		Element_highlight(driver, bookstoreapp);
+		ClickElement(driver, bookstoreapp, 30);
 		return new ToolsQABookStoreAppPage();
 
 	}
 
 	public void IframeCloseClick() {
-		ElementUtil.Element_highlight(driver.findElement(iframeclose), driver);
-		driver.findElement(iframeclose).click();
+		Element_highlight(driver, iframeclose);
+		ClickElement(driver, iframeclose, 30);
 
 	}
 

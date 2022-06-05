@@ -2,11 +2,11 @@ package ReportsListeners;
 
 
 
-import com.ToolsQa.Qa.Base.BaseClass;
+import com.ToolsQa.Qa.Base.DriverManager;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 
-public class ExtentReporterBase extends BaseClass {
+public class ExtentReporterBase extends DriverManager {
 
 	
 	static ExtentReports extend;

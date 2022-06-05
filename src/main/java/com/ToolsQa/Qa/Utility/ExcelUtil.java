@@ -17,9 +17,9 @@ import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.ToolsQa.Qa.Base.BaseClass;
+import com.ToolsQa.Qa.Base.DriverManager;
 
-public class ExcelUtil extends BaseClass {
+public class ExcelUtil extends DriverManager {
 	public static FileInputStream fi;
 	public FileOutputStream fo;
 	public static XSSFWorkbook workbook;
