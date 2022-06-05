@@ -25,13 +25,13 @@ public class ToolsQAElementPageTest extends DriverManager {
 	public void SetUp() {
 		SetUpBrowser();
 		SetUpURL();
+		hp = new ToolsQAHomePage(driver);
+		ep = new ToolsQAElementPage(driver);
 	}
 
 	@Test(priority = 1)
 	public void ElementClickTest() throws InterruptedException {
-		hp = new ToolsQAHomePage(driver);
-		ep = new ToolsQAElementPage(driver);
-
+		
 		switchframesindex(driver, 0);
 		hp.IframeCloseClick();
 		switchiframeback(driver);
@@ -44,12 +44,14 @@ public class ToolsQAElementPageTest extends DriverManager {
 		int c = ep.ElementCountCheck();
 		System.out.println("No of Elments Tab : " + c);
 		Assert.assertEquals(9, c);
-		ep.TextBoxClick();
+		// ep.TextBoxClick();
 
 	}
 
 	@Test(priority = 2)
 	public void ElementTextBoxTest() throws InterruptedException {
+		
+		ep.TextBoxClick();
 		tp = new ElementTextBoxPage(driver);
 		tp.Enternameclick();
 		tp.Enteremailclick();

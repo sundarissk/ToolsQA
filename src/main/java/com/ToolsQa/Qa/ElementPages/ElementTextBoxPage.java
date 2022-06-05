@@ -12,6 +12,23 @@ import org.openqa.selenium.interactions.Actions;
 
 import com.ToolsQa.Qa.Utility.ElementUtil;
 
+
+/*
+ Actions class help in automating and simulating the Keyboard and Mouse actions.
+ Actions. KeyDown,KeyUp,SendKeys
+
+Select the Current Address using CTRL + A
+        actions.keyDown(Keys.CONTROL);
+        actions.sendKeys("a");
+        actions.keyUp(Keys.CONTROL);
+        actions.build().perform(); 
+    
+       above code can also be written as below 
+        
+handle contiguous Keyboard Actions using Actions Class
+Select the Current Address
+        actions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+ */
 public class ElementTextBoxPage {
 	WebDriver driver = null;
 	Actions actions;
@@ -26,7 +43,6 @@ public class ElementTextBoxPage {
 	static final By outputemail = By.xpath("//p[@id='email']");
 	static final By outputcaddress = By.xpath("//p[@id='currentAddress']");
 	static final By outputpaddress = By.xpath("//p[@id='permanentAddress']");
-	
 
 	// 2. Initializing Page Object
 	public ElementTextBoxPage(WebDriver driver) {
@@ -35,7 +51,6 @@ public class ElementTextBoxPage {
 	}
 
 	// 3.Actions
-
 	public void Enternameclick() {
 		Element_highlight(driver, fullname);
 		SendKeys(driver, fullname, 30, "Sun");
@@ -70,7 +85,7 @@ public class ElementTextBoxPage {
 
 	public void submitclick() {
 		try {
-		ElementUtil.ScrollToView(driver, submit);
+			ElementUtil.ScrollToView(driver, submit);
 			Element_highlight(driver, submit);
 			ClickElement(driver, submit, 120);
 
@@ -90,7 +105,7 @@ public class ElementTextBoxPage {
 			String email = opemail.getText();
 			String cdd = opcadd.getText();
 			String pdd = oppadd.getText();
-			
+
 			System.out.println("Details Enter in the TextBox:");
 			System.out.println(name);
 			System.out.println(email);
