@@ -1,8 +1,5 @@
 package com.ToolsQa.Qa.Base;
 
-import java.io.FileInputStream;
-import java.time.Duration;
-import java.util.Properties;
 
 import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
@@ -41,9 +38,9 @@ public class DriverManager extends ConfigInit {
 	public void SetUpURL() {
 		driver.manage().window().maximize();
 		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
-		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
+		//driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+		//driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
+		//driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
 
 		driver.get(prop.getProperty("url"));
 

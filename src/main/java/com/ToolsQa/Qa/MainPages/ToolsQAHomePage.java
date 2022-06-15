@@ -29,7 +29,7 @@ public class ToolsQAHomePage {
 		try {
 			Element_highlight(driver, elements);
 			ScrollToView(driver, elements);
-			ClickElement(driver, elements, 30);
+			ClickElement(driver, elements);
 
 		} catch (Exception e) {
 			System.out.println("Error : " + e);
@@ -41,41 +41,41 @@ public class ToolsQAHomePage {
 
 	public ToolsQAFormsPage FormsClick() {
 		Element_highlight(driver, forms);
-		ClickElement(driver, forms, 30);
+		ClickElement(driver, forms);
 		return new ToolsQAFormsPage();
 
 	}
 
 	public ToolsQAAlrtFrmWinPage AlrtFrmWinClick() {
 		Element_highlight(driver, afw);
-		ClickElement(driver, afw, 30);
+		ClickElement(driver, afw);
 		return new ToolsQAAlrtFrmWinPage();
 
 	}
 
 	public ToolsQAWidgetsPage WidgetsClick() {
 		Element_highlight(driver, widgets);
-		ClickElement(driver, widgets, 30);
+		ClickElement(driver, widgets);
 		return new ToolsQAWidgetsPage();
 	}
 
 	public ToolsQAInteractionsPage InteractionsClick() {
 		Element_highlight(driver, interactions);
-		ClickElement(driver, interactions, 30);
+		ClickElement(driver, interactions);
 		return new ToolsQAInteractionsPage();
 
 	}
 
 	public ToolsQABookStoreAppPage BookStoreAppClick() {
 		Element_highlight(driver, bookstoreapp);
-		ClickElement(driver, bookstoreapp, 30);
+		ClickElement(driver, bookstoreapp);
 		return new ToolsQABookStoreAppPage();
 
 	}
 
 	public void IframeCloseClick() {
 		Element_highlight(driver, iframeclose);
-		ClickElement(driver, iframeclose, 30);
+		ClickElement(driver, iframeclose);
 
 	}
 

@@ -5,9 +5,9 @@
     <classes>
       <class name="com.ToolsQa.Qa.Tests.ToolsQAElementPageTest">
         <methods>
-          <include name="ElementClickTest"/>
+          <include name="ElementRadioButtonClickTest"/>
+          <include name="EndOfMethod"/>
           <include name="SetUp"/>
-          <include name="ElementTextBoxTest"/>
           <include name="closing"/>
         </methods>
       </class> <!-- com.ToolsQa.Qa.Tests.ToolsQAElementPageTest -->

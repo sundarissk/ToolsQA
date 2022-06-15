@@ -2,12 +2,16 @@ package com.ToolsQa.Qa.MainPages;
 
 import static com.ToolsQa.Qa.Utility.ElementUtil.ClickElement;
 import static com.ToolsQa.Qa.Utility.ElementUtil.Element_highlight;
+import static com.ToolsQa.Qa.Utility.ElementUtil.LocatorToElement;
 import static com.ToolsQa.Qa.Utility.FunctionUtil.getcount;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 
-import com.ToolsQa.Qa.ElementPages.ElementTextBoxPage;
+import com.ToolsQa.Qa.ElementPages.ElementCheckBoxPage;
+import com.ToolsQa.Qa.ElementPages.ElementRadioButtonPage;
+import com.ToolsQa.Qa.ElementPages.ElementTextBoxPages;
 
 public class ToolsQAElementPage {
 
@@ -36,7 +40,19 @@ public class ToolsQAElementPage {
 	public void ElementDropClick() {
 		try {
 			Element_highlight(driver, elementdrop);
-			ClickElement(driver, elementdrop, 30);
+
+			WebElement elementdrop1 = LocatorToElement(driver, txtbox);
+			boolean isDisplayed = elementdrop1.isDisplayed();
+
+			if (isDisplayed == true)
+				System.out.println("Element dropdown already selected");
+
+			else {
+
+				ClickElement(driver, elementdrop);
+				System.out.println("Element cliked");
+			}
+
 		} catch (Exception e) {
 			System.out.println("Error : " + e);
 		}
@@ -48,16 +64,39 @@ public class ToolsQAElementPage {
 		return count;
 	}
 
-	public ElementTextBoxPage TextBoxClick() {
+	public ElementTextBoxPages TextBoxClick() {
 		try {
 			Element_highlight(driver, txtbox);
-			ClickElement(driver, txtbox, 30);
+			ClickElement(driver, txtbox);
 
 		} catch (Exception e) {
 			System.out.println("Error : " + e);
 		}
 
-		return new ElementTextBoxPage(driver);
+		return new ElementTextBoxPages(driver);
 	}
+
+	public ElementCheckBoxPage ElementCheckBoxCheck() {
+		try {
+
+			Element_highlight(driver, chkbox);
+			ClickElement(driver, chkbox);
+		} catch (Exception e) {
+			System.out.println("Error : " + e);
+		}
+		return new ElementCheckBoxPage(driver);
+	}
+	
+	public ElementRadioButtonPage  ElementRadioButtonCheck() {
+		try {
+		Element_highlight(driver, radiobtn);
+		ClickElement(driver, radiobtn);
+		}
+		catch (Exception e) {
+			System.out.println("Error : " + e);
+		}
+		return new ElementRadioButtonPage(driver);
+	}
+	
 
 }

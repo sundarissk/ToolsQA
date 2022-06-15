@@ -12,24 +12,23 @@ import org.openqa.selenium.interactions.Actions;
 
 import com.ToolsQa.Qa.Utility.ElementUtil;
 
+public class ElementTextBoxPages {
 
-/*
- Actions class help in automating and simulating the Keyboard and Mouse actions.
- Actions. KeyDown,KeyUp,SendKeys
-
-Select the Current Address using CTRL + A
-        actions.keyDown(Keys.CONTROL);
-        actions.sendKeys("a");
-        actions.keyUp(Keys.CONTROL);
-        actions.build().perform(); 
-    
-       above code can also be written as below 
-        
-handle contiguous Keyboard Actions using Actions Class
-Select the Current Address
-        actions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
- */
-public class ElementTextBoxPage {
+	/*
+	 * Actions class help in automating and simulating the Keyboard and Mouse
+	 * actions. Actions. KeyDown,KeyUp,SendKeys
+	 * 
+	 * Select the Current Address using CTRL + A actions.keyDown(Keys.CONTROL);
+	 * actions.sendKeys("a"); actions.keyUp(Keys.CONTROL);
+	 * actions.build().perform();
+	 * 
+	 * above code can also be written as below
+	 * 
+	 * handle contiguous Keyboard Actions using Actions Class Select the Current
+	 * Address
+	 * actions.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().
+	 * perform();
+	 */
 	WebDriver driver = null;
 	Actions actions;
 
@@ -45,25 +44,25 @@ public class ElementTextBoxPage {
 	static final By outputpaddress = By.xpath("//p[@id='permanentAddress']");
 
 	// 2. Initializing Page Object
-	public ElementTextBoxPage(WebDriver driver) {
-		this.driver = driver;
-		actions = new Actions(driver);
-	}
+	public ElementTextBoxPages(WebDriver driver) {
+			this.driver = driver;
+			actions = new Actions(driver);
+		}
 
 	// 3.Actions
 	public void Enternameclick() {
 		Element_highlight(driver, fullname);
-		SendKeys(driver, fullname, 30, "Sun");
+		SendKeys(driver, fullname, "Sun");
 	}
 
 	public void Enteremailclick() {
 		Element_highlight(driver, email);
-		SendKeys(driver, email, 30, "Sun@gmail.com");
+		SendKeys(driver, email, "Sun@gmail.com");
 	}
 
 	public void Entercaddressclick() {
 		Element_highlight(driver, caddress);
-		SendKeys(driver, caddress, 30, "12345, capital city, Delhi, TN");
+		SendKeys(driver, caddress, "12345, capital city, Delhi, TN");
 	}
 
 	public void Enterpaddressclick() {
@@ -87,7 +86,7 @@ public class ElementTextBoxPage {
 		try {
 			ElementUtil.ScrollToView(driver, submit);
 			Element_highlight(driver, submit);
-			ClickElement(driver, submit, 120);
+			ClickElement(driver, submit);
 
 		} catch (Exception e) {
 			System.out.println("Error in submitclick :" + e);

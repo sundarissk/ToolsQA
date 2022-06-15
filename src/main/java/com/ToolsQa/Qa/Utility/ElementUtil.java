@@ -1,6 +1,6 @@
 package com.ToolsQa.Qa.Utility;
 
-import java.time.Duration;
+import java.util.List;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -31,15 +31,13 @@ public class ElementUtil {
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(locator));
 	}
 
-	public static void SendKeys(WebDriver driver, By locator, long timeout, String value) {
-		WebElement E1 = new WebDriverWait(driver, Duration.ofMinutes(timeout))
-				.until(ExpectedConditions.elementToBeClickable(driver.findElement(locator)));
+	public static void SendKeys(WebDriver driver, By locator, String value) {
+		WebElement E1 = driver.findElement(locator);
 		E1.sendKeys(value);
 	}
 
-	public static void ClickElement(WebDriver driver, By locator, long timeout) {
-		WebElement E1 = new WebDriverWait(driver, Duration.ofMinutes(timeout))
-				.until(ExpectedConditions.elementToBeClickable(driver.findElement(locator)));
+	public static void ClickElement(WebDriver driver, By locator) {
+		WebElement E1 = driver.findElement(locator);
 		E1.click();
 
 	}
@@ -47,5 +45,10 @@ public class ElementUtil {
 	public static WebElement LocatorToElement(WebDriver driver, By locator) {
 		return driver.findElement(locator);
 	}
+	
+	public static List<WebElement> LocatorToElements(WebDriver driver, By locator) {
+		return driver.findElements(locator);
+	}
 
+	
 }
